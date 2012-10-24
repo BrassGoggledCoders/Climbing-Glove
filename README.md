@@ -1,4 +1,1 @@
-Climbing-Glove-Mod
-==================
-
-The Climbing Glove Mod for MC
+This is the Climbing Glove Mod v0.7 for Minecraft version 1.3.2. Please use this code for educational purposes only!
