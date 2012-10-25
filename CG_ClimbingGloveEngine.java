@@ -57,11 +57,19 @@ public class CG_ClimbingGloveEngine
 		GameRegistry.addRecipe(new ItemStack(climbingHelmet, 1), new Object[] {"XXX", "CVC", "ZZZ", 'X', Item.slimeBall, 'C', Item.ingotIron, 'V', Item.helmetLeather, 'Z', Item.redstone});
 		GameRegistry.addRecipe(new ItemStack(minersHelmet, 1), new Object[] {"XCX", "XVX", 'X', Item.silk, 'C', Block.glowStone, 'V', Item.helmetLeather});
 		//ModLoader.setInGameHook(this, true, true);
+		//Get rid of this hook method completely, we don't need these with Forge. 
+
+
+		//Registers the tick handlers with the TickRegistry HashSet for iteration and invocation later
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 	}
 	
 	/**
 	 *  Checks this code every tick that goes by in the game (1 tick = 0.1 seconds)
 	 */
+
+	/* We're going to be slowly converting this to the new Forge methods over the next few days. 
 	public boolean onTickInGame(float f, Minecraft minecraft)
 	{	
 		boolean collided = minecraft.thePlayer.isCollidedHorizontally;
@@ -137,6 +145,6 @@ public class CG_ClimbingGloveEngine
 			trig = true;
 		}
 		return true;
-	}
+	}*/
 }
 
