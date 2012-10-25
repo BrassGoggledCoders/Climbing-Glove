@@ -25,6 +25,14 @@ public class CG_ClimbingGloveEngine
 	public int keyDelay;
 	public boolean trig;
 
+	//Populates this Proxy field with an instance of either the Server Proxy or the Client Proxy based on what side the code is being run on
+	@SidedProxy(clientSide = "climbingglove.ClientProxy", serverSide = "climbingglove.CommonProxy")
+	public static CommonProxy proxy;
+	
+	//Populates this instance field with an instance of your Mod File
+	@Instance("CG")
+	public CG_ClimbingGloveEngine INSTANCE;
+
 	/**
 	 * Items/Block(s)
 	 */
@@ -34,9 +42,16 @@ public class CG_ClimbingGloveEngine
 	public static final Item minersHelmet = (new CG_MinerHelmet(693, EnumArmorMaterial.CLOTH, ModLoader.addArmor("mine"), 0)).setItemName("minersHelmet").setIconIndex(ModLoader.addOverride("/gui/items.png", "/mrarcane/minerHelmet.png"));
 	public static final Block light = (new CG_Light(206, ModLoader.addOverride("/terrain.png", "/mrarcane/light.png"))).setHardness(0.0F).setStepSound(Block.soundWoodFootstep).setBlockName("light").setLightValue(1.0F);
 
+	public static CG_ClimbingGloveEngine getModInstance()
+	{
+		return INSTANCE;
+	}
+
 	@Init
 	public void InitiateCG_ClimbingGloveEngine(FMLInitializationEvent initEvent)
 	{
+		INSTANCE = this;		
+
 		/** Integer values/booleans **/
 		keyDelay = 0; 
 		trig = false; 
@@ -91,6 +106,7 @@ public class CG_ClimbingGloveEngine
 		 * while wearing the Climbing Helmet --if the player is, then the motion of the 
 		 * player is a positive Y, effectively giving the 'stick to ceiling' effect
 		 */
+		/*
 		if(minecraft.thePlayer.inventory.armorItemInSlot(3) != null)
 		{
 			ItemStack itemstack = minecraft.thePlayer.inventory.armorItemInSlot(3);
