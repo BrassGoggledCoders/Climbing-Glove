@@ -18,7 +18,7 @@ public class CG_ClimbingGloveEngine
 	/**
 	 * Variables/Booleans
 	 */
-	private static Minecraft minecraft = ModLoader.getMinecraftInstance();
+	private static Minecraft minecraft = Minecraft.getMinecraft();
 	public static boolean activateClimbing = false;
 	private static boolean jumpKeyDown = false;
 	public static boolean isOn;
@@ -36,11 +36,11 @@ public class CG_ClimbingGloveEngine
 	/**
 	 * Items/Block(s)
 	 */
-	public static final Item climbingGloveInactive = new CG_ClimbingGloveInactive(3000).setItemName("climbingGlove").setIconIndex(ModLoader.addOverride("/gui/items.png", "/mrarcane/climbingGloveInactive.png")).setCreativeTab(CreativeTabs.tabTools);
-	public static final Item climbingGloveActive = new CG_ClimbingGloveActive(3001).setItemName("climbingGloveActive").setIconIndex(ModLoader.addOverride("/gui/items.png", "/mrarcane/climbingGloveActive.png"));
-	public static final Item climbingHelmet = (new ItemArmor(692, EnumArmorMaterial.CLOTH, ModLoader.addArmor("climb"), 0)).setIconIndex(ModLoader.addOverride("/gui/items.png", "/mrarcane/climbingHelmet.png")).setItemName("climbingHelmet");
-	public static final Item minersHelmet = (new CG_MinerHelmet(693, EnumArmorMaterial.CLOTH, ModLoader.addArmor("mine"), 0)).setItemName("minersHelmet").setIconIndex(ModLoader.addOverride("/gui/items.png", "/mrarcane/minerHelmet.png"));
-	public static final Block light = (new CG_Light(206, ModLoader.addOverride("/terrain.png", "/mrarcane/light.png"))).setHardness(0.0F).setStepSound(Block.soundWoodFootstep).setBlockName("light").setLightValue(1.0F);
+	public static final Item climbingGloveInactive = new CG_ClimbingGloveInactive(3000).setItemName("climbingGlove").setIconIndex(1).setCreativeTab(CreativeTabs.tabTools);
+	public static final Item climbingGloveActive = new CG_ClimbingGloveActive(3001).setItemName("climbingGloveActive").setIconIndex(2);
+	public static final Item climbingHelmet = (new ItemArmor(692, EnumArmorMaterial.CLOTH, 0)).setIconIndex(3).setItemName("climbingHelmet");
+	public static final Item minersHelmet = (new CG_MinerHelmet(693, EnumArmorMaterial.CLOTH, 0)).setItemName("minersHelmet").setIconIndex(4);
+	public static final Block light = (new CG_Light(206, 5)).setHardness(0.0F).setStepSound(Block.soundWoodFootstep).setBlockName("light").setLightValue(1.0F);
 
 	public static CG_ClimbingGloveEngine getModInstance()
 	{
