@@ -92,7 +92,7 @@ public class CG_ClimbingGloveEngine
 
 		if(collided && activateClimbing) {minecraft.thePlayer.motionY = 0.065555559;}
 		if(activateClimbing && minecraft.thePlayer.isSneaking() && collided) {minecraft.thePlayer.motionY = 0;}
-		EntityPlayer Player = ModLoader.getMinecraftInstance().thePlayer;
+		EntityPlayer Player = minecraft.thePlayer;
 		if(Player.getCurrentEquippedItem() != null && Player.getCurrentEquippedItem().itemID == CG_ClimbingGloveEngine.climbingGloveActive.shiftedIndex)
 		{
 			activateClimbing = true;
