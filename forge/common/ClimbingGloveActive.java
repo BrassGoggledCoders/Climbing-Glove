@@ -1,8 +1,10 @@
-package net.minecraft.src;
+package glovemod.common;
 
-public class CG_ItemClimbingGloveActive extends Item 
+import net.minecraft.src.*;
+
+public class ClimbingGloveActive extends Item 
 {
-	public CG_ItemClimbingGloveActive(int i) 
+	public ClimbingGloveActive(int i) 
 	{
 		super(i);
 		this.setMaxStackSize(1);
@@ -13,7 +15,12 @@ public class CG_ItemClimbingGloveActive extends Item
     {
 		entityplayer.addChatMessage("Climbing Glove Disabled"); // Chat message
 		//mod_ClimbingGlove.activateClimbing = false; This method has been removed
-		itemstack = new ItemStack(mod_ClimbingGlove.climbingGloveInactive);
+		itemstack = new ItemStack(ClimbingGloveEngine.climbingGloveOff);
         return itemstack;
     }
+	
+	public String getTextureFile()
+	{
+		return "/glove/sprites/climbingglove_sprites.png";
+	}
 }

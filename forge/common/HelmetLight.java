@@ -1,13 +1,14 @@
-package net.minecraft.src;
+package glovemod.common;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.src.*;
 
-public class EntityHelmetLight extends Entity
+public class HelmetLight extends Entity
 {
 	/**
 	 * Some simple parameters for the Entity.class extension. 
 	 */
-    public EntityHelmetLight(World world1)
+    public HelmetLight(World world1)
     {
         super(world1);
         world = world1;
@@ -17,7 +18,7 @@ public class EntityHelmetLight extends Entity
     /**
      * More parameters
      */
-    public EntityHelmetLight(World world1, EntityPlayer entityplayer1)
+    public HelmetLight(World world1, EntityPlayer entityplayer1)
     {
         this(world1);
         entityplayer = entityplayer1;
@@ -47,9 +48,9 @@ public class EntityHelmetLight extends Entity
      */
     public void onUpdate()
     {
-        if(!mod_ClimbingGlove.isOn)
+        if(!ClimbingGloveEngine.isOn)
         {
-        	mod_ClimbingGlove.isOn = false;
+        	ClimbingGloveEngine.isOn = false;
             setDead();
         }
         ItemStack itemstack = entityplayer.inventory.armorInventory[3];
@@ -57,27 +58,27 @@ public class EntityHelmetLight extends Entity
         {
             setDead();
         }
-        if(itemstack.itemID != mod_ClimbingGlove.minersHelmet.shiftedIndex)
+        if(itemstack.itemID != ClimbingGloveEngine.miningHelmet.shiftedIndex)
         {
             setDead();
         } else
-        if(itemstack.itemID == mod_ClimbingGlove.minersHelmet.shiftedIndex)
+        if(itemstack.itemID == ClimbingGloveEngine.miningHelmet.shiftedIndex)
         {
             update(entityplayer);
-            if(world.getBlockId(i1, j1, k1) == 206) //Block 206 is the light block item ID in the mod_ file.
+            if(world.getBlockId(i1, j1, k1) == ClimbingGloveEngine.LightID) 
             {
                 world.setBlockWithNotify(i1, j1, k1, 0);
             }
             if(world.getBlockId(i, j, k) == 0)
             {
-                world.setBlockWithNotify(i, j, k, 206); //Block 206 is the light block item ID in the mod_ file.
+                world.setBlockWithNotify(i, j, k, ClimbingGloveEngine.LightID); 
             }
             i1 = (int)entityplayer.posX; //posX
             j1 = (int)entityplayer.posY;
             k1 = (int)entityplayer.posZ;
         } else
         {
-            mod_ClimbingGlove.isOn = false;
+        	ClimbingGloveEngine.isOn = false;
             setDead();
         }
     }

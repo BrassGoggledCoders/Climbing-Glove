@@ -1,17 +1,21 @@
-package net.minecraft.src;
+package glovemod.common;
 
+import net.minecraft.src.*;
 import java.util.Random;
 
-public class CG_BlockLight extends Block
+public class Light extends Block
 {
 	/** 
 	 * Some simple block bounds like i is the item ID and the material determines
 	 * what sound to play when it is stepped on and such.						
 	 */
-	protected CG_BlockLight(int i, int j)
+	protected Light(int i, int j)
     {
         super(i, j, Material.wood);
-        
+        j = blockIndexInTexture;
+        this.setLightValue(ClimbingGloveEngine.lightBrightness);
+        this.setHardness(0.0F);
+        this.setStepSound(Block.soundWoodFootstep);
     }
 
 	/** 
@@ -107,7 +111,7 @@ public class CG_BlockLight extends Block
 	public void removeIfLightOff(World world, int i, int j, int k)
 	{
 		EntityPlayer player = ModLoader.getMinecraftInstance().thePlayer;
-		if(!mod_ClimbingGlove.isOn)
+		if(!ClimbingGloveEngine.isOn)
 		{
 			world.setBlockWithNotify(i, j, k, 0);
 		}
@@ -121,4 +125,10 @@ public class CG_BlockLight extends Block
     {
         return 0;
     }
+    
+    public String getTextureFile()
+	{
+		return "/mrarcane/climbingglove_sprites.png";
+	}
 }
+
